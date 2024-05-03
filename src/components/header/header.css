@@ -1,0 +1,28 @@
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.header div {
+    margin: 20px 0px 20px 0px;
+}
+.header div button {
+    background-color: white;
+    border: none;
+    border-bottom: 2px solid rgba(24, 144, 255, 1);
+    margin-left: 5px;
+    font-size: 14px;
+    padding: 15px;
+}
+.header input {
+    width: 940px;
+    height: 40px;
+    margin-bottom: 40px;
+    border-radius: 5px;
+    border-color:rgba(217, 217, 217, 1);
+    outline: none
+}
+.header input:focus {
+    outline: none
+}

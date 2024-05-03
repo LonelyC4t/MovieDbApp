@@ -2,6 +2,7 @@ import React from 'react';
 
 class Api extends React.Component {
   static token = '97dea5f592aff1c31fc028c0d296ed1a';
+
   getFilm(film) {
     return fetch(`https://api.themoviedb.org/3/search/movie?query=${film}`, {
       method: 'GET',

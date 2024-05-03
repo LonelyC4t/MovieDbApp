@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import './filmList.css';
 import { format } from 'date-fns';
@@ -7,6 +8,9 @@ export default class ItemFilm extends React.Component {
     const { itemData } = this.props;
     const strCate = (str, maxLength) => {
       return str.length > maxLength ? str.slice(0, maxLength - 1) + '…' : str;
+    };
+    ItemFilm.defaultProps = {
+      itemData: {},
     };
     return (
       <>

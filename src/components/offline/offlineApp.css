@@ -1,0 +1,9 @@
+.offline {
+    position: absolute;
+    font-family: sans-serif;
+    font-weight: 600;
+    left: 50%;
+    top: 50%;
+    height: 150px;
+    width: 300px;
+}

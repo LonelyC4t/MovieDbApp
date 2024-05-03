@@ -7,6 +7,12 @@
     padding: 40px;
     
 }
+.filmList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 1100px;
+}
 .filmList__wrapper {
     display: flex;
     flex-wrap: wrap;
