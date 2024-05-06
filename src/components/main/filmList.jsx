@@ -6,7 +6,7 @@ import { Spin } from "antd";
 import { Alert } from "antd";
 import './itemFilm.css';
 
-const FilmList = ({ filmList, loader, error }) => {
+const FilmList = ({ filmList, loader, error, totalResault, searchValue }) => {
   
   let elementFilm = filmList.map((elem) => {
     return (
@@ -28,7 +28,7 @@ const FilmList = ({ filmList, loader, error }) => {
   
   return (
     <main className="filmList">
-      {load()}
+      {totalResault ? load(): <Alert message={`По Вашему запросу ${searchValue} нет результатов, впишите чё-нить другое`} type="info"/>}
     </main>
   );
 };
