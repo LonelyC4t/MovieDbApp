@@ -7,6 +7,8 @@ import { api } from '../../api/api';
 import './App.css';
 import Header from '../header/header';
 import Footer from '../footer/footer';
+import HeaderRated from '../header/headerRated';
+import {GenresProvider} from '../../provaiderContext/movieAppContext';
 
 class App extends React.Component {
 
@@ -20,7 +22,29 @@ class App extends React.Component {
     page: 1,
     searchValue: '',
     totalResault: 0,
-    totalPages: 0
+    totalPages: 0,
+    tab: {
+      search: true,
+      rated: false,
+    },
+  };
+
+  changeTab = (e) => {
+    if(e.target.textContent === 'Rated') {
+      this.setState({
+        tab: {
+          search: false,
+          rated: true,
+        },
+      });
+    } else if(e.target.textContent === 'Search') {
+      this.setState({
+        tab: {
+          search: true,
+          rated: false,
+        },
+      });
+    };
   };
 
   onChange = (e) => {    
@@ -72,8 +96,7 @@ class App extends React.Component {
       let request = await api.getFilm(search.trim(), page);
       if (request.ok) {
         let response = await request.json();
-
-      
+        
         this.setState({
           movieData: response.results,
           isLoading: false,
@@ -99,34 +122,77 @@ class App extends React.Component {
       this.getData("new kid", 1);
     };
   };
-
+  async getGenres(){
+    let response = await api.getGenres()
+    let request = await response.json()
+    this.setState({
+      genres: request.genres,
+    });
+  };
+  async getIdSession() {
+    let response = await api.createGuestSession()
+    let request = await response.json()
+    document.cookie = `guest_session_id=${request.guest_session_id}; path=/; expires=Tue, ${new Date(request.expires_at)}`
+    
+  };
   componentDidMount() {
     this.getData("new kid", 1);
+    this.getIdSession();
+    this.getGenres()
+    
   }
  
   render() {
-    return (
-      <>
-        <section className="movieApp">
-        <Header 
-        onChange={this.onChange}
-        />
-          <FilmList 
-          filmList={this.state.movieData} 
-          loader={this.state.isLoading}
-          error={this.state.onError}
-          totalResault={this.state.totalResault}
-          searchValue={this.state.searchValue}
+    if(this.state.tab.search === true) {
+      return (
+        <>
+        <GenresProvider value={this.state.genres}>
+          <section className="movieApp">
+          <Header 
+          onChange={this.onChange}
+          changeTab={this.changeTab}
+          stateTab={this.state.tab}
           />
-          <Footer totalPages={this.state.totalPages} 
-          changePage={this.changePage}
-          page={this.state.page}
-          />
-        </section>
-        
+            <FilmList 
+            filmList={this.state.movieData} 
+            loader={this.state.isLoading}
+            error={this.state.onError}
+            totalResault={this.state.totalResault}
+            searchValue={this.state.searchValue}
+            />
+            <Footer totalPages={this.state.totalPages} 
+            changePage={this.changePage}
+            page={this.state.page}
+            />
+          </section>
+        </GenresProvider>
       </>
-
-    );
+      )
+    } else if(this.state.tab.rated === true) {
+      return (
+        <>
+        <GenresProvider value={this.state.genres}>
+          <section className="movieApp">
+            <HeaderRated
+            changeTab={this.changeTab}
+            stateTab={this.state.tab}
+            />
+            <FilmList 
+            filmList={this.state.movieData} 
+            loader={this.state.isLoading}
+            error={this.state.onError}
+            totalResault={this.state.totalResault}
+            searchValue={this.state.searchValue}
+            />
+            <Footer totalPages={this.state.totalPages} 
+            changePage={this.changePage}
+            page={this.state.page}
+            />
+          </section>
+        </GenresProvider>
+      </>
+      )
+    }
   }
 }
 

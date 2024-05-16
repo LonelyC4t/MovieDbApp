@@ -8,6 +8,10 @@
     
 }
 .card__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
     flex-basis: 60%;
     margin-left: 5%;
     cursor: default;
@@ -40,4 +44,32 @@
 }
 .card__description div span:first-child {
     margin-left: 0;
+}
+.card__header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+}
+.card__rate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 1px black;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    
+}
+.card__rate_low {
+    border: solid 1px #E90000;
+}
+.card__rate_lowMid {
+   border: solid 1px #E97E00; 
+}
+.card__rate_topMid {
+   border: solid 1px #E9D100; 
+}
+.card__rate_top {
+   border: solid 1px #66E900; 
 }

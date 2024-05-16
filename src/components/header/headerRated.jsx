@@ -4,7 +4,7 @@ import React from 'react';
 import './header.css';
 import { api } from '../../api/api';
 
-export default class Header extends React.Component {
+export default class HeaderRated extends React.Component {
     
   debounce = (cb) => {
     let time;
@@ -15,9 +15,9 @@ export default class Header extends React.Component {
       }, 1000);
     };
   };
-
+  
   render() {
-    const { onChange, changeTab, stateTab } = this.props;
+    const { changeTab, stateTab } = this.props;
 
     return (
       <header className="header">
@@ -25,7 +25,6 @@ export default class Header extends React.Component {
           <button className={stateTab.search ? `active` : ''} onClick={changeTab}>Search</button>
           <button className={stateTab.rated ? `active` : ''} onClick={changeTab}>Rated</button>
         </div>
-        <input placeholder="Type to search" onChange={this.debounce(onChange)} />
       </header>
     );
   }

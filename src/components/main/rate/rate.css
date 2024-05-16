@@ -1,0 +1,14 @@
+.card__starsRate {
+    
+    width: 250px;
+    height: 50px;
+}
+.card__starsRate .star {
+    font-size: 20px;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+.card__starsRate .star:hover {
+    background-color: yellow;
+}
