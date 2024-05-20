@@ -73,3 +73,45 @@
 .card__rate_top {
    border: solid 1px #66E900; 
 }
+@media (width < 580px) {
+    
+    .card{
+        width: 390px;
+        height: 245px;
+        padding: 10px;
+        position: relative;
+    }
+    .card img{
+        width: 60px;
+        height: 90px;
+    }
+    .card__description{
+        display: flex;
+        text-align: left;
+    }
+    .card__description p {
+        width: 350px;
+        bottom: -8%;
+        left: -20%;
+        position: relative;
+    }
+
+    .card__header{
+        justify-content: space-between;
+        height: 20px;
+        width: 310px;
+    }
+    .card__header h5{
+        margin: 0;
+        width: 300px;
+        margin-top: 5px;
+    }
+    .card__description span {
+        margin-top: 25px;
+    }
+    .card__starsRate {
+        position: relative;
+        bottom: -20px;
+        right: -150px;
+    }
+}

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Alert } from 'antd';
 import './offlineApp.css';
 

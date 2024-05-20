@@ -17,3 +17,17 @@
     display: flex;
     flex-wrap: wrap;
 }
+@media (width < 1000px) {
+    .filmList__wrapper {
+        flex-direction: column;
+    }
+    .filmList{
+        width: 500px;
+    }
+}
+@media (width < 580px) {
+    
+    .filmList{
+        width: 350px;
+    }
+}

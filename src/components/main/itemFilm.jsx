@@ -1,26 +1,27 @@
-/* eslint-disable */
 import React from 'react';
 import './filmList.css';
 import { format } from 'date-fns';
+
+import { GenresConsumer } from '../../provaiderContext/movieAppContext.js';
+
 import Rate from './rate/rate';
 import Generes from './generes/generes';
-import { GenresConsumer } from '../../provaiderContext/movieAppContext.js';
 
 export default class ItemFilm extends React.Component {
   changeRingRate = (rate) => {
     return rate <= 3
-      ? `card__rate card__rate_low`
+      ? 'card__rate card__rate_low'
       : rate > 3 && rate <= 5
-        ? `card__rate card__rate_lowMid`
+        ? 'card__rate card__rate_lowMid'
         : rate > 5 && rate < 7
-          ? `card__rate card__rate_topMid`
+          ? 'card__rate card__rate_topMid'
           : rate >= 7
-            ? `card__rate card__rate_top`
-            : `card__rate`;
+            ? 'card__rate card__rate_top'
+            : 'card__rate';
   };
 
   render() {
-    const { itemData } = this.props;
+    const { itemData, sendRate, idFilm } = this.props;
     const strCate = (str, maxLength) => {
       return str.length > maxLength ? str.slice(0, maxLength - 1) + '…' : str;
     };
@@ -33,7 +34,7 @@ export default class ItemFilm extends React.Component {
         {itemData.backdrop_path ? (
           <img src={`https://image.tmdb.org/t/p/w500/${itemData.backdrop_path}`} alt={itemData.title} />
         ) : (
-          <p>Цыгане украли постер вместе с конём :с</p>
+          <p>No image</p>
         )}
         <div className="card__description">
           <div className="card__header">
@@ -48,15 +49,13 @@ export default class ItemFilm extends React.Component {
           )}
           <div>
             <GenresConsumer>
-              {
-                (genres) => {
-                  return <Generes genres={genres} itemData={itemData}/>
-                }
-              }
+              {(genres) => {
+                return <Generes genres={genres} itemData={itemData} />;
+              }}
             </GenresConsumer>
           </div>
           <p>{strCate(itemData.overview, 300)}</p>
-          <Rate />
+          <Rate idFilm={idFilm} sendRate={sendRate} />
         </div>
       </>
     );

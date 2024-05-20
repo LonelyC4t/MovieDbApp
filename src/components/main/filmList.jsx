@@ -1,16 +1,14 @@
-/* eslint-disable */
 import React from 'react';
+import { Spin, Alert } from 'antd';
 
-import ItemFilm from './itemFilm';
-import { Spin } from 'antd';
-import { Alert } from 'antd';
 import './itemFilm.css';
+import ItemFilm from './itemFilm';
 
-const FilmList = ({ filmList, loader, error, totalResault, searchValue }) => {
+const FilmList = ({ filmList, loader, error, totalResault, searchValue, sendRate }) => {
   let elementFilm = filmList.map((elem) => {
     return (
       <div key={elem.id} className="filmList__card card">
-        <ItemFilm itemData={elem} />
+        <ItemFilm idFilm={elem.id} sendRate={sendRate} itemData={elem} />
       </div>
     );
   });

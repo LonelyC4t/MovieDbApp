@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Pagination } from 'antd';
 import './footer.css';
 

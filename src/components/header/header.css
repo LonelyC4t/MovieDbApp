@@ -30,3 +30,16 @@
 .header input:focus {
     outline: none
 }
+
+@media (width < 1000px) {
+    .header input{
+        width: 540px;
+        margin-right: 5%;
+    }
+}
+@media (width < 580px) {
+    .header input{
+        width: 388px;
+        margin-right: 5%;
+    }
+}
