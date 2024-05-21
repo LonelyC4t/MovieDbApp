@@ -4,7 +4,7 @@ import './offlineApp.css';
 const OfflineApp = () => {
   return (
     <div className="offline">
-      <Alert message="Хуситы опять перерезали кабель" type="error" />
+      <Alert message="No internet connection" type="error" />
     </div>
   );
 };

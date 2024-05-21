@@ -26,7 +26,7 @@ const FilmList = ({ filmList, loader, error, totalResault, searchValue, sendRate
       {totalResault ? (
         load()
       ) : (
-        <Alert message={`По Вашему запросу ${searchValue} нет результатов, впишите чё-нить другое`} type="info" />
+        <Alert message={`По Вашему запросу ${searchValue} нет результатов, попробуйте другой запрос`} type="info" />
       )}
     </main>
   );
