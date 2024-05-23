@@ -1,4 +1,3 @@
-/*eslint-disable*/
 import React from 'react';
 import { Spin, Alert, Pagination } from 'antd';
 
@@ -35,8 +34,8 @@ export default class FilmList extends React.Component {
             totalResault: response.total_results,
             totalPages: response.total_pages,
             onError: {
-              error: false
-            }
+              error: false,
+            },
           });
         }
       } catch (err) {
@@ -152,9 +151,9 @@ export default class FilmList extends React.Component {
 
     let elementFilm = (stateTab.search ? this.state.movieData : this.state.ratedMovieData).map((elem) => {
       return (
-          <div key={elem.id} className="filmList__card card">
-            <ItemFilm idFilm={elem.id} sendRate={this.sendRate} itemData={elem} />
-          </div>
+        <div key={elem.id} className="filmList__card card">
+          <ItemFilm idFilm={elem.id} sendRate={this.sendRate} itemData={elem} />
+        </div>
       );
     });
 
@@ -162,8 +161,12 @@ export default class FilmList extends React.Component {
       let keys = Math.random();
       if (this.state.loader) return <Spin size="large" />;
       if (this.state.onError.error) return <Alert message={this.state.onError.errorMessage.message} type="error" />;
-      return <div key={keys} className="filmList__wrapper">{elementFilm}</div>;
-     };
+      return (
+        <div key={keys} className="filmList__wrapper">
+          {elementFilm}
+        </div>
+      );
+    };
 
     return (
       <>
