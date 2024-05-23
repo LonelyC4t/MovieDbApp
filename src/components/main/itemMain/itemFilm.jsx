@@ -2,10 +2,9 @@ import React from 'react';
 import './filmList.css';
 import { format } from 'date-fns';
 
-import { GenresConsumer } from '../../provaiderContext/movieAppContext.js';
-
-import Rate from './rate/rate';
-import Generes from './generes/generes';
+import { GenresConsumer } from '../../../provaiderContext/movieAppContext.js';
+import Rate from '../rate/rate.jsx';
+import Generes from '../generes/generes.jsx';
 
 export default class ItemFilm extends React.Component {
   changeRingRate = (rate) => {

@@ -16,6 +16,7 @@
 .filmList__wrapper {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 @media (width < 1000px) {
     .filmList__wrapper {
@@ -24,6 +25,13 @@
     .filmList{
         width: 500px;
     }
+}
+.footer {
+    display: flex;
+    justify-content: center;
+}
+.footer ul {
+    margin-top: 50px;
 }
 @media (width < 580px) {
     

@@ -25,7 +25,7 @@ export default class Header extends React.Component {
             Rated
           </button>
         </div>
-        <input placeholder="Type to search" onChange={this.debounce(onChange)} />
+        {stateTab.search && <input placeholder="Type to search" onChange={this.debounce(onChange)} />}
       </header>
     );
   }
